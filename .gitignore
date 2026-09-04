@@ -32,3 +32,17 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Kotlin
+.kotlin/
+
+# Nuxt web app
+web/node_modules/
+web/.nuxt/
+web/.output/
+web/.data/
+web/shots/
+web/package-lock.json
+
+# Scratch
+*.zip
