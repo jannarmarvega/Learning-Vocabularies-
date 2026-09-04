@@ -1,0 +1,32 @@
+services:
+  dictionary:
+    build: .
+    image: my-dictionary-web
+    container_name: my-dictionary
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      # Keeps favourites, learnings and the accent setting across rebuilds.
+      - dictionary-data:/app/data
+
+  # Hot-reloading dev server: docker compose --profile dev up dictionary-dev
+  dictionary-dev:
+    profiles: ["dev"]
+    image: node:22-bookworm-slim
+    container_name: my-dictionary-dev
+    working_dir: /app
+    command: sh -c "npm install --no-audit --no-fund && npm run dev -- --host 0.0.0.0"
+    environment:
+      NUXT_DATA_DIR: /app/.data
+      NUXT_SEED_DB: /app/server/db/dictionary.seed.db
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/app
+      # Keeps the container's Linux-native node_modules off the host mount.
+      - dev-node-modules:/app/node_modules
+
+volumes:
+  dictionary-data:
+  dev-node-modules:
