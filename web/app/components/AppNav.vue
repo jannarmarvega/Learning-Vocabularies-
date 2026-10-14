@@ -5,6 +5,7 @@ const items = [
   { to: '/', label: 'Home', icon: 'home' },
   { to: '/search', label: 'Search', icon: 'search' },
   { to: '/browse', label: 'Browse', icon: 'category' },
+  { to: '/quiz', label: 'Quiz', icon: 'quiz' },
   { to: '/learnings', label: 'Learnings', icon: 'school' },
   { to: '/favorites', label: 'Favorites', icon: 'favorite' }
 ]

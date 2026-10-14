@@ -72,7 +72,14 @@ onBeforeUnmount(() => observer?.disconnect())
 
 <template>
   <div class="page">
-    <PageHeader :title="title" back="/browse" />
+    <PageHeader :title="title" back="/browse">
+      <template v-if="category || group" #actions>
+        <NuxtLink class="btn-text btn" :to="{ path: '/quiz', query: category ? { category } : { group } }">
+          <AppIcon name="quiz" :size="18" />
+          Quiz
+        </NuxtLink>
+      </template>
+    </PageHeader>
 
     <div v-if="!items.length && isLoading" class="center-row"><span class="spinner" /></div>
 

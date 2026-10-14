@@ -45,3 +45,17 @@ export interface PartOfSpeechSummary {
   partOfSpeech: string
   wordCount: number
 }
+
+export type QuizMode = 'meaning' | 'word' | 'tagalog'
+
+export interface QuizQuestion {
+  word: Word
+  prompt: string
+  options: string[]
+  answerIndex: number
+}
+
+export interface QuizRound {
+  mode: QuizMode
+  questions: QuizQuestion[]
+}
